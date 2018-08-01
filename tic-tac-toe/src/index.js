@@ -37,7 +37,7 @@ class Board extends React.Component {
       />
     );
   }
-  
+
   render() {
     return (
       <div>
@@ -94,6 +94,14 @@ class Game extends React.Component {
     const current = history[history.length - 1];
     const winner = calculateWinner(current.squares);
 
+    const moves = history.map((step, move) => {
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{`Go to ${move ? `move #${move}` : 'game start'}`}</button>
+        </li>
+      );
+    });
+
     let status;
     if (winner) {
       status = `Winner: ${winner}`;
@@ -111,7 +119,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
