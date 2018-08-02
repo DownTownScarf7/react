@@ -5,7 +5,7 @@ export default class BeerList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      beerCount: this.props.beers.length,
+      beerCount: props.beers.length,
     }
   }
 
@@ -13,7 +13,8 @@ export default class BeerList extends Component {
     if (arr.length > 0) {
       const temp = arr.map(beer => {
         return (
-          <Beer 
+          <Beer
+            key={beer.id}
             name={beer.name} 
             tagLine={beer.tagline} 
             description={beer.description}
