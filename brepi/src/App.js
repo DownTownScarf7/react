@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
+import BeerOptions from './BeerOptions';
+import BeerList from './BeerList';
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pageCount: 10,
+      beerPerPage: 6,
+      beers: [],
+    }
+  }
+
+  componentDidMount() {
     this.getBeers();
   }
 
   getBeers() {
-    fetch('https://api.punkapi.com/v2/beers')
+    fetch(`https://api.punkapi.com/v2/beers?page=${this.state.pageCount}&per_page=${this.state.beerPerPage}`)
       .then(res => {
-        res.json().then(data => {
-          console.log(data);
+        res.json()
+        .then(data => {
+          console.log('DATA:', data); // DEBUG
+          this.setState({
+            beers: data,
+          });
         }).catch(err => {
           console.log(err);
         });
@@ -22,7 +36,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Test
+        <BeerOptions />
+        <BeerList beers={this.state.beers}/>
+        <div className="pagination-wrapper">
+          {/* todo: PAGE BUTTONS */}
+        </div>
       </div>
     );
   }
