@@ -2,13 +2,13 @@ import React from 'react';
 
 export default function Beer(props) {
   return (
-    <div className="beer-wrapper">
-      <h3>{this.props.name}</h3>
-      <p>{this.props.tagLine}</p>
-      <img src={this.props.imgSrc} alt={`${this.props.name}.png`}/>
+    <li className="beer-wrapper">
+      <h3>{props.name}</h3>
+      <p>{props.tagLine}</p>
+      <img src={props.imgSrc} alt={`${props.name}.png`}/>
       <div className="description-wrapper">
-        <p>{this.props.description}</p>
+        <p>{props.description}</p>
       </div>
-    </div>
+    </li>
   );
 }
