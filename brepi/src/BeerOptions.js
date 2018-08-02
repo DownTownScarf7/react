@@ -9,9 +9,7 @@ export default class BeerOptions extends Component {
   }
 
   beerCountOnChange = event => {
-    this.setState({
-      beerCount: +event.target.value,
-    });
+    this.setState({beerCount: +event.target.value});
   }
 
   sendOnClick = () => {
