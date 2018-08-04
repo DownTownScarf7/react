@@ -30,7 +30,7 @@ export default class BeerList extends Component {
   render() {
     return (
       <div className="beerlist-wrapper">
-        <ul>
+        <ul className="beer-ul">
           {this.getBeers(this.props.beers)}
         </ul>
       </div>

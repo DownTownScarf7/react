@@ -9,14 +9,15 @@ class App extends Component {
       pageCount: 10,
       beerPerPage: 6,
       beers: [],
+      beerCount: 6,
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getBeers();
   }
 
-  getBeers() {
+  getBeers = () => {
     fetch(`https://api.punkapi.com/v2/beers?page=${this.state.pageCount}&per_page=${this.state.beerPerPage}`)
       .then(res => {
         res.json()
@@ -26,17 +27,23 @@ class App extends Component {
             beers: data,
           });
         }).catch(err => {
-          console.log(err);
+          console.error(err);
         });
       }).catch(err => {
-        console.log(err);
+        console.error(err);
       });
   }
 
+  sendOnClick = sliderValue => {
+    this.setState({
+      beerCount: sliderValue,
+    });
+  }
+
   render() {
+        //<BeerOptions beerCountOnChange={/*this.beerCountOnChange*/ () => {console.log('asd');}} beerCount={this.state.beerCount} sendOnClick={/*this.sendOnClick*/() => { console.log('RENDERED') }}/>
     return (
       <div className="App">
-        <BeerOptions />
         <BeerList beers={this.state.beers}/>
         <div className="pagination-wrapper">
           {/* todo: PAGE BUTTONS */}

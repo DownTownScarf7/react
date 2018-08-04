@@ -3,3 +3,50 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.beer-ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.beer-wrapper {
+  position: relative;
+  margin: 10px;
+  border: 2px solid #888888;
+  border-radius: 10px;
+  list-style-type: none;
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px;
+  height: 30vh;
+  min-height: 180px;
+  max-height: 230px;
+}
+
+.beerpic {
+  position: absolute;
+  display: block;
+  left: 40%;
+  height: 70%;
+  width: auto;
+  bottom: 0;
+  z-index: 1;
+}
+
+.description-wrapper {
+  position: absolute;
+  display: none;
+  background: #b4b4b4;
+  border-radius: 10px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  overflow: scroll;
+}
+
+.beer-wrapper:hover .description-wrapper {
+  display: block;
+}
